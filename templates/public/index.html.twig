@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Support en ligne</h1>
+
+    <p>
+        Vous pouvez créer un ticket sans vous connecter.<br>
+        <a href="{{ path('app_login') }}">Connexion</a> (réservée au personnel de l'agence).
+    </p>
+
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div>{{ message }}</div>
+        {% endfor %}
+    {% endfor %}
+
+    {{ form_start(form) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.category) }}
+
+        <button type="submit">Envoyer le ticket</button>
+    {{ form_end(form) }}
+{% endblock %}

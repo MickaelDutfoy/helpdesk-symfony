@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<h1>Espace Staff</h1>
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.id }}</td>
+            <td>{{ ticket.email }}</td>
+            <td>{{ ticket.description }}</td>
+            <td>{{ ticket.status.name }}</td>
+            <td>
+                <a href="{{ path('staff_edit_status', {id: ticket.id}) }}">Changer statut</a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
